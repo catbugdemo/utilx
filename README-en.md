@@ -1,3 +1,5 @@
 # utilx
 
- 我在学习中简化的一些公用方法
+English | [简体中文](./README.md)
+
+This is a simple utils package
