@@ -1,3 +1,4 @@
-# a simple util
+# utilx
 
-## utilx
+This is a simple utils package
+
