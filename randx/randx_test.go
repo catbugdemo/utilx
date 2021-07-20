@@ -1,4 +1,4 @@
-package rand
+package randx
 
 import (
 	"github.com/stretchr/testify/assert"

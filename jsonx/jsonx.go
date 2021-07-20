@@ -1,10 +1,10 @@
-package json
+package jsonx
 
 import (
 	"encoding/json"
 )
 
-// FormatStr 以 json 格式化返回结构体
+// FormatStr 以 jsonx 格式化返回结构体
 // v- 结构体
 func FormatStr(v interface{}) (string, error) {
 	indent, e := json.MarshalIndent(v, "", "\t")
