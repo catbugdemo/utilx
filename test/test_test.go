@@ -21,10 +21,10 @@ func A(c *gin.Context) {
 		Name string
 	}
 	var param Param
-	if e := c.ShouldBindJSON(&param);e!=nil{
+	if e := c.ShouldBindJSON(&param); e != nil {
 		log.Println("fail")
 	}
-	c.JSON(http.StatusOK,gin.H{"Name":param.Name})
+	c.JSON(http.StatusOK, gin.H{"Name": param.Name})
 }
 
 func TestGinPost(t *testing.T) {
@@ -40,7 +40,7 @@ func TestGinPost(t *testing.T) {
 }
 
 func B(c *gin.Context) {
-	c.JSON(http.StatusOK,gin.H{"message":"success"})
+	c.JSON(http.StatusOK, gin.H{"message": "success"})
 }
 
 func TestGinGet(t *testing.T) {

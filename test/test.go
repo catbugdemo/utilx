@@ -29,9 +29,9 @@ func GetRedigo() redis.Conn {
 // 当测试 c.Bind() 头没有绑定 application/json 无法获取参数
 // 测试 gin Post
 // url 地址，value 测试数据 ， handlers
-func GinPost(url string, value interface{},handlers gin.HandlerFunc) []byte {
+func GinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
 	r := initGin()
-	r.POST(url,handlers)
+	r.POST(url, handlers)
 
 	jsonByte, e := json.Marshal(value)
 	if e != nil {
@@ -49,13 +49,13 @@ func GinPost(url string, value interface{},handlers gin.HandlerFunc) []byte {
 	return body
 }
 
-func GinGet(url string,handlers gin.HandlerFunc) []byte {
+func GinGet(url string, handlers gin.HandlerFunc) []byte {
 	r := initGin()
-	r.GET(url,handlers)
+	r.GET(url, handlers)
 
 	req := httptest.NewRequest(http.MethodGet, url, nil)
 	w := httptest.NewRecorder()
-	r.ServeHTTP(w,req)
+	r.ServeHTTP(w, req)
 
 	result := w.Result()
 	defer result.Body.Close()
