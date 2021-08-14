@@ -1,4 +1,4 @@
-package float
+package main
 
 import "math"
 
