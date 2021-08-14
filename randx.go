@@ -8,11 +8,11 @@ import (
 // 生成一个 r 结构体的伪随机数
 var r = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-// Num
+// RandNum
 // 生成一个随机数 ，范围 [min,max)
-func Num(min, max int) int {
+func RandNum(min, max int) int {
 	if min > max {
-		return Num(max, min)
+		return RandNum(max, min)
 	}
 	return r.Intn(max-min) + min
 }

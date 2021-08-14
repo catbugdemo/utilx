@@ -14,7 +14,7 @@ func TestFormatStr(t *testing.T) {
 		test := Test{
 			Name: "123",
 		}
-		json, e := FormatStr(test)
+		json, e := JsonFormatStr(test)
 		assert.Nil(t, e)
 		fmt.Println(json)
 	})

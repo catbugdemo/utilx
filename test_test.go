@@ -11,7 +11,7 @@ import (
 
 func TestGetRedigo(t *testing.T) {
 	t.Run("miniRedis", func(t *testing.T) {
-		conn := GetRedigo()
+		conn := TGetRedigo()
 		assert.NotNil(t, conn)
 	})
 }
@@ -34,7 +34,7 @@ func TestGinPost(t *testing.T) {
 			Name string
 		}
 		test := Test{Name: "123"}
-		post := GinPost("/test", test, A)
+		post := TGinPost("/test", test, A)
 		fmt.Println(string(post))
 	})
 }
@@ -45,7 +45,7 @@ func B(c *gin.Context) {
 
 func TestGinGet(t *testing.T) {
 	t.Run("ginGet", func(t *testing.T) {
-		get := GinGet("/test", B)
+		get := TGinGet("/test", B)
 		fmt.Println(string(get))
 	})
 }

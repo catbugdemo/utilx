@@ -13,7 +13,7 @@ import (
 )
 
 // miniRedis
-func GetRedigo() redis.Conn {
+func TGetRedigo() redis.Conn {
 	mock, e := miniredis.Run()
 	if e != nil {
 		log.Fatalln("fail to get mock err:", e)
@@ -25,11 +25,11 @@ func GetRedigo() redis.Conn {
 	return dial
 }
 
-// GinPost
+// TGinPost
 // 当测试 c.Bind() 头没有绑定 application/json 无法获取参数
 // 测试 gin Post
 // url 地址，value 测试数据 ， handlers
-func GinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
+func TGinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
 	r := initGin()
 	r.POST(url, handlers)
 
@@ -49,7 +49,7 @@ func GinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
 	return body
 }
 
-func GinGet(url string, handlers gin.HandlerFunc) []byte {
+func TGinGet(url string, handlers gin.HandlerFunc) []byte {
 	r := initGin()
 	r.GET(url, handlers)
 

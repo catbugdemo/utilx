@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 )
 
-// FormatStr 以 jsonx 格式化返回结构体
+// JsonFormatStr 以 jsonx 格式化返回结构体
 // v- 结构体
-func FormatStr(v interface{}) (string, error) {
+func JsonFormatStr(v interface{}) (string, error) {
 	indent, e := json.MarshalIndent(v, "", "\t")
 	if e != nil {
 		return "", e
