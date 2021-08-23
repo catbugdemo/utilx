@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -27,14 +26,7 @@ func HttpPostJSON(url string, value interface{}, dest interface{}) error {
 		return errors.New("resp.Body is nil")
 	}
 
-	all, e := ioutil.ReadAll(resp.Body)
-	if e != nil {
-		return e
-	}
-	if resp.StatusCode != 200 {
-		return errors.New("status is not 200,resp body is " + string(all))
-	}
-	if e = json.Unmarshal(all, &dest); e != nil {
+	if e = json.NewDecoder(resp.Body).Decode(dest); e != nil {
 		return e
 	}
 	return nil
