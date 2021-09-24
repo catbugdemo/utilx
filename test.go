@@ -3,16 +3,17 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/alicebob/miniredis/v2"
-	"github.com/gin-gonic/gin"
-	"github.com/gomodule/redigo/redis"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httptest"
+
+	"github.com/alicebob/miniredis/v2"
+	"github.com/gin-gonic/gin"
+	"github.com/gomodule/redigo/redis"
 )
 
-// miniRedis
+// TGetRedigo 测试中使用模拟缓存
 func TGetRedigo() redis.Conn {
 	mock, e := miniredis.Run()
 	if e != nil {
@@ -25,8 +26,7 @@ func TGetRedigo() redis.Conn {
 	return dial
 }
 
-// TGinPost
-// 当测试 c.Bind() 头没有绑定 application/json 无法获取参数
+// TGinPost 当测试 c.Bind() 头没有绑定 application/json 无法获取参数
 // 测试 gin Post
 // url 地址，value 测试数据 ， handlers
 func TGinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
@@ -49,6 +49,7 @@ func TGinPost(url string, value interface{}, handlers gin.HandlerFunc) []byte {
 	return body
 }
 
+// TGinGet 测试并返回 gin Get
 func TGinGet(url string, handlers gin.HandlerFunc) []byte {
 	r := initGin()
 	r.GET(url, handlers)

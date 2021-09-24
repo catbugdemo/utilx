@@ -2,28 +2,28 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"net/http"
 	"os"
 	"path"
 	"testing"
+
+	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFile(t *testing.T) {
 	getenv := os.Getenv(`GOPATH`)
-	
+
 	t.Run("CheckNotExist", func(t *testing.T) {
 		exist := CheckNotExist(path.Join(getenv, `src/github.com/catbugdemo`, `file.go`))
 		assert.False(t, exist)
 	})
-	
+
 	t.Run(`Mkdir`, func(t *testing.T) {
-		Mkdir(path.Join(getenv,))
+		Mkdir(path.Join(getenv))
 	})
 }
-
 
 func TestFloat(t *testing.T) {
 	t.Run("false", func(t *testing.T) {
@@ -41,11 +41,11 @@ func TestJsonx(t *testing.T) {
 	type Test struct {
 		Name string
 	}
-	t.Run("JsonFormatStr", func(t *testing.T) {
+	t.Run("JSONFormatStr", func(t *testing.T) {
 		test := Test{
 			Name: "123",
 		}
-		json, e := JsonFormatStr(test)
+		json, e := JSONFormatStr(test)
 		assert.Nil(t, e)
 		fmt.Println(json)
 	})
@@ -61,7 +61,6 @@ func TestRandx(t *testing.T) {
 		assert.Contains(t, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}, num)
 	})
 }
-
 
 func TestGetRedigo(t *testing.T) {
 	t.Run("miniRedis", func(t *testing.T) {
@@ -103,9 +102,3 @@ func TestGinGet(t *testing.T) {
 		fmt.Println(string(get))
 	})
 }
-
-
-
-
-
-

@@ -7,9 +7,8 @@ import (
 	"net/http"
 )
 
-// HttpPostJSON
-// url 地址 ，value 需要传递的数据 ，  dest 需要绑定的数据
-func HttpPostJSON(url string, value interface{}, dest interface{}) error {
+// HTTPostJSON url 地址 ，value 需要传递的数据 ，  dest 需要绑定的数据
+func HTTPostJSON(url string, value interface{}, dest interface{}) error {
 	buf, e := json.Marshal(value)
 	if e != nil {
 		return e
