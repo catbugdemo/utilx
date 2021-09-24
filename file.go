@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/pkg/errors"
 	"os"
+
+	"github.com/pkg/errors"
 )
 
 // CheckNotExist 判断文件是否存在
