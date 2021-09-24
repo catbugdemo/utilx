@@ -1,5 +1,12 @@
 language: go
+
 go:
-  - '1.12'
-before_script:
-  - composer install
+  - 1.12
+
+sudo: required
+
+install:
+  - echo "install"
+
+script:
+  - echo "script"
