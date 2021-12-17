@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 	"testing"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -100,5 +101,14 @@ func TestGinGet(t *testing.T) {
 	t.Run("ginGet", func(t *testing.T) {
 		get := TGinGet("/test", B)
 		fmt.Println(string(get))
+	})
+}
+
+func TestTimex(t *testing.T) {
+	t.Run("IsSameDay", func(t *testing.T) {
+		one := time.Now()
+		two := time.Now().AddDate(-1, 0, 0)
+		assert.Equal(t, true, IsSameDay(one, one))
+		assert.Equal(t, false, IsSameDay(one, two))
 	})
 }
